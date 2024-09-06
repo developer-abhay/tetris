@@ -12,16 +12,7 @@ const grid = Array(rows)
   .fill()
   .map(() => [...gridEmptyRow]);
 
-// grid[0][2] = 1;
-// grid[0][3] = 1;
-// grid[0][4] = 1;
-// grid[0][5] = 1;
-
-grid[0][5] = 1;
-grid[0][6] = 1;
-grid[1][5] = 1;
-grid[1][6] = 1;
-
+// Creating Grid cells
 function createDiv(value, row, col) {
   const div = document.createElement("div");
   div.classList.add("grid-cell");
@@ -37,7 +28,9 @@ function createDiv(value, row, col) {
   return div;
 }
 
-function render() {
+// Rendering the grid
+function renderGrid() {
+  playground.innerHTML = "";
   grid.forEach((row, rowIndex) => {
     row.forEach((value, colIndex) => {
       playground.appendChild(createDiv(value, rowIndex, colIndex));
@@ -45,14 +38,77 @@ function render() {
   });
 }
 
-function nextState() {
-  if (!grid[11].includes(1)) {
-    grid.pop();
-    grid.unshift([...gridEmptyRow]);
-    playground.innerHTML = "";
-    render();
+// Creating a Shape
+function createShape(type) {
+  let shape = {};
+  if (type == "box") {
+    shape = [
+      [0, 4],
+      [0, 5],
+      [1, 4],
+      [1, 5],
+    ];
+  }
+  if (type == "line") {
+    shape = [
+      [0, 3],
+      [0, 4],
+      [0, 5],
+      [0, 6],
+    ];
+  }
+  if (type == "zed") {
+    shape = [
+      [0, 4],
+      [0, 5],
+      [1, 5],
+      [1, 6],
+    ];
+  }
+  if (type == "L") {
+    shape = [
+      [0, 4],
+      [0, 5],
+      [0, 6],
+      [1, 4],
+    ];
+  }
+  return shape;
+}
+
+// Rendering a shape
+function renderShape(shape) {
+  if (i) {
+    shape.forEach((item, index) => {
+      if (grid[item[0]]) {
+        grid[item[0]][item[1]] = 0;
+        item[0] += 1;
+      }
+    });
+  }
+
+  shape.forEach((item) => {
+    if (grid[item[0]]) {
+      grid[item[0]][item[1]] = 1;
+    }
+  });
+}
+
+async function nextState() {
+  if (i <= 11) {
+    renderShape(shape);
+    renderGrid();
+    i++;
+  } else {
+    i = 0;
+    shape = createShape("line");
+    renderGrid();
   }
 }
 
-render();
+let shape = createShape("box");
+let i = 0;
+renderGrid();
 setInterval(nextState, 1000);
+
+// console.log(currentShape);

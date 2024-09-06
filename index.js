@@ -1,8 +1,8 @@
 import "./style.css";
 
 const playground = document.querySelector(".playground");
-const width = 50;
-const height = 50;
+const width = 30;
+const height = 30;
 
 let xAxis = 0;
 let yAxis = 0;
@@ -41,15 +41,15 @@ function createShape(shape) {
   const div = document.createElement("div");
 
   if (shape == "box") {
-    div.style.width = "100px";
-    div.style.height = "100px";
-    div.style.top = "-100px";
+    div.style.width = `${width * 2}px`;
+    div.style.height = `${height * 2}px`;
+    div.style.top = "-60px";
     div.style.left = `50%`;
     div.style.transform = `translateX(-50%)`;
   }
   if (shape == "line") {
-    div.style.width = "200px";
-    div.style.height = "50px";
+    div.style.width = `${width * 4}px`;
+    div.style.height = `${height}px`;
     div.style.top = "-50px";
     div.style.left = `50%`;
     div.style.transform = `translateX(-50%)`;

@@ -26,14 +26,12 @@ body {
   text-align: center;
 }
 
-/* .playground {
+.playground {
   background-color: aliceblue;
   max-width: 550px;
   max-height: 650px;
   display: grid;
   gap: 1px;
-
-
 }
 
 .grid-cell {
@@ -42,10 +40,10 @@ body {
 
 .grid-cell:hover {
   cursor: pointer;
-} */
+}
 
 /*index.js*/
-.playground {
+/* .playground {
   background-color: aliceblue;
   width: 500px;
   height: 650px;
@@ -56,4 +54,4 @@ body {
 .playground > div {
   position: absolute;
   background-color: red;
-}
+} */
